@@ -1,6 +1,8 @@
 package com.example.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +29,22 @@ public class EmployeeService {
      *
      * @return 従業員情報リスト
      */
-    public List<Employee> showList() {
-        return employeeRepository.findAll();
+    public Map<Integer, List<Employee>> showList() {
+        int limit = 10;
+        int offset = 0;
+        Map<Integer, List<Employee>> employeeListMap = new LinkedHashMap<>();
+        int count = employeeRepository.countAll();
+        int page = count / limit + 1;
+        if (count % limit == 0) {
+            count--;
+        }
+
+        for (int i = 1; i <= page; i++) {
+            employeeListMap.put(i, employeeRepository.findAllLimitOffset(limit, offset));
+            offset += limit;
+        }
+
+        return employeeListMap;
     }
 
     /**
