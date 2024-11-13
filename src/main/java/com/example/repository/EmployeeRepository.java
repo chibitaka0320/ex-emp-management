@@ -275,11 +275,24 @@ public class EmployeeRepository {
 
     }
 
+    /**
+     * 従業員数をカウントする
+     *
+     * @return 従業員数
+     */
     public int countAll() {
         String sql = String.format("SELECT COUNT(*) FROM %s;", TABLE_NAME);
         return template.queryForObject(sql, new MapSqlParameterSource(), Integer.class);
     }
 
+    /**
+     * 従業員一覧情報を入社日順で取得
+     * limit,offsetで指定件数分を取得
+     *
+     * @param limit  取得件数
+     * @param offset 取得開始場所
+     * @return 従業員情報リスト
+     */
     public List<Employee> findAllLimitOffset(int limit, int offset) {
 
         // クエリ作成

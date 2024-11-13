@@ -68,6 +68,7 @@ public class EmployeeController {
     /**
      * 従業員一覧を出力する
      *
+     * @param page  ページ番号(デフォルトは１ページ)
      * @param model モデル
      * @return 従業員一覧画面
      */
@@ -76,7 +77,6 @@ public class EmployeeController {
         if (session.getAttribute("administratorName") == null) {
             return "forward:/";
         }
-        System.out.println(page);
         Map<Integer, List<Employee>> employeeListMap = employeeService.showList();
         model.addAttribute("page", employeeListMap.size());
         model.addAttribute("employeeList", employeeListMap.get(page));
