@@ -1,5 +1,7 @@
 package com.example.form;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -19,7 +21,7 @@ public class UpdateEmployeeForm {
     private String name;
 
     /** 画像 */
-    private String image;
+    private MultipartFile image;
 
     /** 性別 */
     @NotBlank
@@ -79,11 +81,11 @@ public class UpdateEmployeeForm {
         this.name = name;
     }
 
-    public String getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 
