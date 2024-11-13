@@ -40,7 +40,7 @@
                 <tr>
                   <th nowrap>従業員名</th>
                   <td>
-                    <label class="error-messages" th:errors="*{name}">
+                    <label class="error-messages" th:if="*{name}" th:text="#{message.name}">
                       氏名を入力してください
                     </label>
                     <input type="text" name="name" class="form-control" th:field="${employee.name}">
@@ -56,7 +56,7 @@
                 <tr>
                   <th nowrap>性別</th>
                   <td>
-                    <label class="error-messages" th:errors="*{gender}">
+                    <label class="error-messages" th:if="*{gender}" th:text="#{message.gender}">
                       性別を入力してください
                     </label>
                     <input type="text" name="gender" class="form-control" th:field="${employee.gender}">
@@ -65,7 +65,7 @@
                 <tr>
                   <th nowrap>入社日</th>
                   <td>
-                    <label class="error-messages" th:errors="*{hireDate}">
+                    <label class="error-messages" th:if="*{hireDate}" th:text="#{message.hireDate}">
                       日付を選択してください
                     </label>
                     <input type="date" name="hireDate" class="form-control" th:field="${employee.hireDate}">
@@ -74,7 +74,7 @@
                 <tr>
                   <th nowrap>メールアドレス</th>
                   <td>
-                    <label class="error-messages" th:errors="*{mailAddress}">
+                    <label class="error-messages" th:if="*{mailAddress}" th:text="#{message.mailAddress}">
                       メールアドレスを入力してください
                     </label>
                     <input type="text" name="mailAddress" class="form-control" th:field="${employee.mailAddress}">
@@ -83,7 +83,7 @@
                 <tr>
                   <th nowrap>郵便番号</th>
                   <td>
-                    <label class="error-messages" th:errors="*{zipCode}">
+                    <label class="error-messages" th:if="*{zipCode}" th:text="#{message.zipCode}">
                       郵便番号を入力してください
                     </label>
                     <input type="text" name="zipCode" class="form-control" th:field="${employee.zipCode}">
@@ -92,7 +92,7 @@
                 <tr>
                   <th nowrap>住所</th>
                   <td>
-                    <label class="error-messages" th:errors="*{address}">
+                    <label class="error-messages" th:if="*{address}" th:text="#{message.address}">
                       住所を入力してください
                     </label>
                     <input type="text" name="address" class="form-control" th:field="${employee.address}">
@@ -101,7 +101,7 @@
                 <tr>
                   <th nowrap>電話番号</th>
                   <td>
-                    <label class="error-messages" th:errors="*{telephone}">
+                    <label class="error-messages" th:if="*{telephone}" th:text="#{message.telephone}">
                       電話番号を入力してください
                     </label>
                     <input type="text" name="telephone" class="form-control" th:field="${employee.telephone}">
@@ -110,7 +110,7 @@
                 <tr>
                   <th nowrap>給料</th>
                   <td>
-                    <label class="error-messages" th:errors="*{salary}">
+                    <label class="error-messages" th:if="*{salary}" th:text="#{message.salary}">
                       給料を入力してください
                     </label>
                     <input type="text" name="salary" class="form-control" th:field="${employee.salary}">
@@ -119,8 +119,9 @@
                 <tr>
                   <th nowrap>特性</th>
                   <td>
-                    <label class="error-messages" th:errors="*{characteristics}">
-                      特性を入力してください
+                    <label class="error-messages" th:if="*{characteristics}"
+                      th:text="#{message.characteristics}"></label>
+                    特性を入力してください
                     </label>
                     <textarea type="text" name="characteristics" class="form-control" rows="5" cols="33"
                       th:text="${employee.characteristics}"></textarea>
@@ -129,7 +130,7 @@
                 <tr>
                   <th nowrap>扶養人数</th>
                   <td>
-                    <label class="error-messages" th:errors="*{dependentsCount}">
+                    <label class="error-messages" th:if="*{dependentsCount}" th:text="#{message.dependentsCount}">
                       扶養人数を入力してください
                     </label>
                     <label class="control-label" style="color: red" for="dependentsCount"></label>

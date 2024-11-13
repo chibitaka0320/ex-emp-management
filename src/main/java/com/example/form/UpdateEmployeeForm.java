@@ -15,52 +15,52 @@ public class UpdateEmployeeForm {
     private String id;
 
     /** 名前 */
-    @NotBlank(message = "氏名を入力してください")
+    @NotBlank
     private String name;
 
     /** 画像 */
     private String image;
 
     /** 性別 */
-    @NotBlank(message = "性別を入力してください")
+    @NotBlank
     private String gender;
 
     /** 入社日（型はこれでOK？） */
-    @NotBlank(message = "日付を選択してください")
-    @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", message = "日付形式で入力してください")
+    @NotBlank
+    @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
     private String hireDate;
 
     /** メールアドレス */
-    @NotBlank(message = "メールアドレスを入力してください")
-    @Email(message = "メール形式で入力してください")
+    @NotBlank
+    @Email
     private String mailAddress;
 
     /** 郵便番号 */
-    @NotBlank(message = "郵便番号を入力してください")
-    @Pattern(regexp = "^[0-9]{3}-[0-9]{4}$", message = "郵便番号形式(ハイフンあり)で入力してください")
+    @NotBlank
+    @Pattern(regexp = "^[0-9]{3}-[0-9]{4}$")
     private String zipCode;
 
     /** 住所 */
-    @NotBlank(message = "住所を入力してください")
+    @NotBlank
     private String address;
 
     /** 電話番号 */
-    @NotBlank(message = "電話番号を入力してください")
-    @Pattern(regexp = "^[0-9]{2,4}-[0-9]{2,4}-[0-9]{4}$", message = "電話番号形式(ハイフンあり)で入力してください")
+    @NotBlank
+    @Pattern(regexp = "^[0-9]{2,4}-[0-9]{2,4}-[0-9]{4}$")
     private String telephone;
 
     /** 給料 */
-    @NotBlank(message = "給料を入力してください")
-    @Pattern(regexp = "^[0-9]+$", message = "数値で入力してください")
+    @NotBlank
+    @Pattern(regexp = "^[0-9]+$")
     private String salary;
 
     /** 特性 */
-    @NotBlank(message = "特性を入力してください")
+    @NotBlank
     private String characteristics;
 
     /** 扶養人数 */
-    @NotBlank(message = "扶養人数を入力してください")
-    @Pattern(regexp = "^[0-9]+$", message = "数値で入力してください")
+    @NotBlank
+    @Pattern(regexp = "^[0-9]+$")
     private String dependentsCount;
 
     public String getId() {
