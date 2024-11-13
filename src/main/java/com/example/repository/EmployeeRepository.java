@@ -274,4 +274,33 @@ public class EmployeeRepository {
         return template.query(sql.toString(), param, EMPLOYEE_ROW_MAPPER);
 
     }
+
+    public int countAll() {
+        String sql = String.format("SELECT COUNT(*) FROM %s;", TABLE_NAME);
+        return template.queryForObject(sql, new MapSqlParameterSource(), Integer.class);
+    }
+
+    public List<Employee> findAllLimitOffset(int limit, int offset) {
+
+        // クエリ作成
+        String sql = String.format("""
+                SELECT
+                    id, name, image, gender, hire_date, mail_address, zip_code
+                    , address, telephone, salary, characteristics, dependents_count
+                FROM
+                    %s
+                ORDER BY
+                    hire_date DESC
+                LIMIT
+                    :limit
+                OFFSET
+                    :offset;
+                """, TABLE_NAME);
+
+        SqlParameterSource param = new MapSqlParameterSource().addValue("limit", limit).addValue("offset", offset);
+
+        // 実行
+        return template.query(sql, param, EMPLOYEE_ROW_MAPPER);
+
+    }
 }

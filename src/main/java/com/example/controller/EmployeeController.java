@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.Employee;
@@ -69,11 +72,14 @@ public class EmployeeController {
      * @return 従業員一覧画面
      */
     @GetMapping("/showList")
-    public String showList(Model model) {
+    public String showList(@RequestParam(defaultValue = "1") int page, Model model) {
         if (session.getAttribute("administratorName") == null) {
             return "forward:/";
         }
-        model.addAttribute("employeeList", employeeService.showList());
+        System.out.println(page);
+        Map<Integer, List<Employee>> employeeListMap = employeeService.showList();
+        model.addAttribute("page", employeeListMap.size());
+        model.addAttribute("employeeList", employeeListMap.get(page));
         return "employee/list";
     }
 
